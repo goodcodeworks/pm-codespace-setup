@@ -1,0 +1,15 @@
+{
+  "name": "zen-startup",
+  "displayName": "PM Launcher",
+  "description": "Opens a terminal, closes sidebars and editors, and maximizes the panel on startup",
+  "version": "0.0.5",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {}
+}

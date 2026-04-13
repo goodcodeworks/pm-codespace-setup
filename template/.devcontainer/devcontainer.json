@@ -1,0 +1,51 @@
+{
+  "name": "PM Dev Environment",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+
+  "forwardPorts": [3000, 8081, 19000, 19006],
+  "portsAttributes": {
+    "3000":  { "label": "Dev Server",          "onAutoForward": "openBrowser" },
+    "8081":  { "label": "Expo Metro Bundler",  "onAutoForward": "silent" },
+    "19000": { "label": "Expo Dev Tools",      "onAutoForward": "silent" },
+    "19006": { "label": "Expo Web Preview",    "onAutoForward": "silent" }
+  },
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.profiles.linux": {
+          "Claude Code": {
+            "path": "bash",
+            "args": ["-lc", "claude --dangerously-skip-permissions; exec bash"]
+          },
+          "bash": {
+            "path": "bash"
+          }
+        },
+        "terminal.integrated.defaultProfile.linux": "Claude Code",
+        "editor.formatOnSave": true,
+        "workbench.startupEditor": "none",
+        "workbench.activityBar.location": "hidden",
+        "workbench.statusBar.visible": false,
+        "workbench.layoutControl.enabled": false,
+        "workbench.editor.showTabs": "none",
+        "editor.minimap.enabled": false,
+        "security.workspace.trust.enabled": false,
+        "security.workspace.trust.startupPrompt": "never"
+      },
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  },
+
+  "remoteEnv": {}
+}
