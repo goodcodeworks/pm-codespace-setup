@@ -8,12 +8,12 @@ REPO="goodcodeworks/pm-codespace-setup"
 BRANCH="${PM_SETUP_BRANCH:-main}"
 BASE_URL="https://raw.githubusercontent.com/${REPO}/${BRANCH}/template"
 
-# Colors
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-RED='\033[0;31m'
-CYAN='\033[0;36m'
-NC='\033[0m'
+# Colors (ANSI-C quoted so the bytes are real ESC, not literal \033)
+GREEN=$'\033[0;32m'
+YELLOW=$'\033[1;33m'
+RED=$'\033[0;31m'
+CYAN=$'\033[0;36m'
+NC=$'\033[0m'
 
 say() { printf "${CYAN}▶${NC} %s\n" "$*"; }
 ok()  { printf "${GREEN}✓${NC} %s\n" "$*"; }
