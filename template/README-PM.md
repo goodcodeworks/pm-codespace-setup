@@ -20,11 +20,13 @@ If Claude isn't running, type `cc` and press Enter to launch it.
 
 ## Step 3 — Log in to Claude (first time only)
 
-Claude will ask how you'd like to authenticate. Pick:
+Claude will ask how you'd like to sign in. Pick the **Claude account with subscription** option (not the Console / API one).
 
-> **✅ Claude Max plan**
+1. A browser tab opens for Claude sign-in. Use the same account you use on claude.ai. If no tab opens, press `c` in the terminal to copy the sign-in link and paste it into a new tab.
+2. After you sign in, the page shows a **code**. Copy it, go back to the codespace tab, and paste it into the terminal where it says *Paste code here*.
+3. When the terminal says **Login successful**, press Enter.
 
-A browser tab will open for Claude sign-in. Use the same credentials you use on claude.ai. Close the sign-in tab when done.
+Your Claude account needs a paid plan (Pro, Max, or a Team/Enterprise seat) — the free plan doesn't include Claude Code. If you don't have one, ask your admin.
 
 ---
 
@@ -80,7 +82,8 @@ Back on GitHub, go to your Codespaces list → **⋯** menu → **Stop codespace
 | Problem | Fix |
 |---|---|
 | Terminal is showing bash, not Claude | Type `cc` and press Enter |
-| "Usage limit reached" | Wait an hour or upgrade your Max plan |
+| "Usage limit reached" | Wait for the reset time Claude shows, or ask your admin about a bigger plan |
+| Claude asks you to sign in again | Type `/login` and repeat Step 3 |
 | Preview tab didn't open | Ask Claude *"What's the dev server URL?"* |
 | Claude seems stuck | `Ctrl+C` to cancel, then `cc` to restart |
 | Want to undo everything | Tell Claude: *"Undo all my changes"* |
@@ -93,9 +96,3 @@ Back on GitHub, go to your Codespaces list → **⋯** menu → **Stop codespace
 - **Point at things you can see.** *"The section that says 'Trusted by 1000+ teams' — change 1000+ to 5000+"*.
 - **One change at a time.** Claude is more reliable with focused requests.
 - **Ask questions.** *"What files control the navigation?"* — Claude will explore for you.
-
----
-
-## Need more detail?
-
-See [PM-ONBOARDING.md](./PM-ONBOARDING.md) for the full reference, including the GitHub Issues workflow for async requests.

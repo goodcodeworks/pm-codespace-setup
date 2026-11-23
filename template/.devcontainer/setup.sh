@@ -55,19 +55,37 @@ fi
 # -----------------------------------------------------------------------------
 # Install Claude Code CLI
 # -----------------------------------------------------------------------------
+# Native installer (recommended by Anthropic): installs to ~/.local/bin and
+# auto-updates. Falls back to npm, which needs Node 22+.
 echo "🤖 Installing Claude Code CLI..."
-npm install -g @anthropic-ai/claude-code
+export PATH="$HOME/.local/bin:$PATH"
+if ! curl -fsSL https://claude.ai/install.sh | bash; then
+  echo "⚠️ Native installer failed — falling back to npm"
+  npm install -g @anthropic-ai/claude-code@latest
+fi
+# Make sure every new shell can find it, whichever way it was installed
+for rc in ~/.bashrc ~/.profile; do
+  grep -qF '.local/bin' "$rc" 2>/dev/null || \
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$rc"
+done
+if command -v claude >/dev/null 2>&1; then
+  echo "✓ Claude Code $(claude --version 2>/dev/null | head -1)"
+else
+  echo "⚠️ Claude Code did not install — run: curl -fsSL https://claude.ai/install.sh | bash"
+fi
 
 echo "🔗 Adding cc alias..."
 grep -qxF "alias cc='claude --dangerously-skip-permissions'" ~/.bashrc || \
   echo "alias cc='claude --dangerously-skip-permissions'" >> ~/.bashrc
 
 # -----------------------------------------------------------------------------
-# Optional: Expo CLI if this looks like an Expo project
+# Optional: tunnel support if this looks like an Expo project.
+# The Expo CLI itself ships with the project's `expo` package (`npx expo ...`);
+# the old global `expo-cli` is deprecated and no longer installed here.
 # -----------------------------------------------------------------------------
 if [ -f "app.json" ] || [ -f "app.config.js" ] || [ -f "app.config.ts" ]; then
-  echo "📱 Expo project detected — installing Expo CLI..."
-  npm install -g expo-cli @expo/ngrok || true
+  echo "📱 Expo project detected — installing tunnel support (@expo/ngrok)..."
+  npm install -g @expo/ngrok || true
 fi
 
 # -----------------------------------------------------------------------------

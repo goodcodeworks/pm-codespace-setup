@@ -1,6 +1,6 @@
 {
   "name": "PM Dev Environment",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
 
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {}
@@ -22,7 +22,7 @@
         "terminal.integrated.profiles.linux": {
           "Claude Code": {
             "path": "bash",
-            "args": ["-lc", "claude --dangerously-skip-permissions; exec bash"]
+            "args": ["-lc", "export PATH=\"$HOME/.local/bin:$PATH\"; claude --dangerously-skip-permissions; exec bash"]
           },
           "bash": {
             "path": "bash"

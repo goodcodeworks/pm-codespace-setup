@@ -10,8 +10,8 @@ When a PM opens a codespace on a repo that has this setup installed, they land d
 
 | File | Purpose |
 |---|---|
-| `.devcontainer/devcontainer.json` | Node 20 devcontainer, settings to hide VS Code chrome, Claude Code terminal profile |
-| `.devcontainer/setup.sh` | postCreateCommand: package-manager-aware install, Claude CLI, PM branch, `cc` alias, NEXT_PUBLIC_APP_URL, VS Code extension install |
+| `.devcontainer/devcontainer.json` | Node 24 devcontainer, settings to hide VS Code chrome, Claude Code terminal profile |
+| `.devcontainer/setup.sh` | postCreateCommand: package-manager-aware install, Claude Code (native installer), PM branch, `cc` alias, NEXT_PUBLIC_APP_URL, VS Code extension install |
 | `.devcontainer/zen-startup.vsix` | Prebuilt VS Code extension that closes sidebars/editors and maximizes the terminal panel on startup |
 | `.devcontainer/zen-startup/` | Extension source (for transparency / rebuild) |
 | `CLAUDE.md` | Project-level rules Claude reads — PM workflow, safety rules, allowed scope |
@@ -65,7 +65,7 @@ It does **not** commit or push for you — review the changes first.
 
 1. Opens the codespace from GitHub
 2. Sees a full-screen terminal (no file explorer, no Copilot Chat, no editor tabs)
-3. Claude Code greets them and asks for Claude Max plan login
+3. Claude Code greets them and asks them to sign in with their Claude account (first time only — needs a paid Claude plan: Pro, Max, or a Team/Enterprise seat)
 4. They tell Claude what they want changed in plain English
 5. Claude makes edits on a pre-created `pm/<user>-<slug>` branch
 6. When done, PM asks Claude to open a PR
